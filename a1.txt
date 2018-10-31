@@ -1,0 +1,26 @@
+import random
+
+name = input("hi~I'm  R£¬what's your name:")
+print("Hello   " + name)
+xix = eval(input("Please enter a positive integer£º "))
+s = random.randint(0,xix+1)
+try:
+#     temp = eval(input(name + " ," + "what do you think the number in my heart?£º"))
+    print("in fact, you just entered the range of number(0 to you entered number).you can guess the number from the range of number")
+except:
+    print('Now,Please enter a positive integer')
+
+while temp !=s :
+    try:
+        teop = input( name + ", I believe you can guess right. Let's do it again.:")
+        aa = eval(teop)
+        if aa == s:
+            print("WOW!Bingo,Congratulations")
+            break
+        else:
+            if aa > s:
+                print("Hey, brother, it's big.")
+            else:
+                print("it's too little")
+    except:
+         print('Please enter a positive integer£º')

@@ -1,0 +1,17 @@
+# -*- coding: UTF-8 -*-
+from tkinter import *
+root = Tk()  # Create the background color of the window object
+# Create two lists
+li = ['C', 'python', 'php', 'html', 'SQL', 'java']
+movie = ['CSS', 'jQuery', 'Bootstrap']
+listb = Listbox(root)  # Create two list components
+listb2 = Listbox(root)
+for item in li:  # The first widget is inserted into the data
+    listb.insert(0, item)
+
+for item in movie:  # The second widget is inserted into the data
+    listb2.insert(0, item)
+
+listb.pack()  # Place the widget into the main window
+listb2.pack()
+root.mainloop()  # 

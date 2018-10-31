@@ -1,0 +1,53 @@
+import random
+NUM_DIGITS = 3
+MAX_GUESS = 10
+
+def getSecretNum():
+    # Returns a random string numbers of non repeating that consisting of NUM_DIGITS .
+    numbers = list(range(10))
+    random.shuffle(numbers)
+    secretNum = ''
+    for i in range(NUM_DIGITS):
+        secretNum += str(numbers[i])
+    return secretNum
+
+def getClues(guess, secretNum):
+    # Returns a string that is completely correct, digitally correct and erroneous, used to prompt users.
+    if guess == secretNum:
+        return 'Congratulations!'
+    clues = []
+    for i in range(len(guess)):
+        if guess[i] == secretNum[i]:
+            clues.append('Absolutely right')
+        elif guess[i] != secretNum[i] and guess[i] in secretNum:
+            clues.append('Only the number is correct')
+        else:
+            clues.append("error")
+    return clues
+
+print('there are  %s numbers£¬please Guess what it is.' % (NUM_DIGITS))
+print('The clue I gave is:')
+print('When I say:                     It means:')
+print('error                           The 3 numbers are not in the mystical numbers.')
+print('Only the number is correct      the number is right , but the position is not right..')
+print('Absolutely right                numbers is right and the position also right.')
+
+while True:
+    secretNum = getSecretNum()
+    print('there are  %s numbers£¬You have  %s  chance to guess it.' % (NUM_DIGITS,MAX_GUESS))
+    guessesTaken = 1
+    #judge the game if continue.
+    while guessesTaken <= MAX_GUESS:
+        guess = ''
+        while len(guess) != NUM_DIGITS:
+            print()
+            guess = input('This is the %s time: ' % (guessesTaken))
+        print(getClues(guess, secretNum))
+        guessesTaken += 1
+        if guess == secretNum:
+            break
+        if guessesTaken > MAX_GUESS:
+            print('You lost the game,the right answer is  %s.' % (secretNum))
+    m = input('Do you want to play again? (yes or no)')
+    if not m.lower().startswith('y'):
+        break
